@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.pojo;
 
 public class MyDoc {
     private String id;

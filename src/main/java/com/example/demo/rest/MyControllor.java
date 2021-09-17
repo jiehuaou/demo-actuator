@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.rest;
 
+import com.example.demo.config.HelloConfig;
+import com.example.demo.pojo.MyDoc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,7 @@ public class MyControllor {
 
     @RequestMapping("/hello/{id}")
     public MyDoc helloDoc(@PathVariable("id") String id
-            ,@RequestHeader("my-data") Optional<String> myHeader){
+            , @RequestHeader("my-data") Optional<String> myHeader){
         MyDoc doc = new MyDoc(id, config.getGreeting(), myHeader.orElse("other"));
         return doc;
     }
