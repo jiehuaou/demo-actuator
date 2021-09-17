@@ -26,16 +26,20 @@ public class StateManager {
         this.eventPublisher = eventPublisher;
     }
     public void acceptTraffic(){
-        AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_IDLE, ReadinessState.ACCEPTING_TRAFFIC);
+        AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_IDLE, 
+            ReadinessState.ACCEPTING_TRAFFIC);
     }
     public void refuseTraffic(){
-        AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_BUSY, ReadinessState.REFUSING_TRAFFIC);
+        AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_BUSY, 
+            ReadinessState.REFUSING_TRAFFIC);
     }
     public void serviceUp(){
-        AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_UP, LivenessState.CORRECT);
+        AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_UP, 
+            LivenessState.CORRECT);
     }
     public void serviceDown(){
-        AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_DOWN, LivenessState.BROKEN);
+        AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_DOWN, 
+            LivenessState.BROKEN);
     }
 }
 
