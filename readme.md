@@ -49,3 +49,23 @@ check the state
 curl -v http://localhost:8080/actuator/health/liveness
 curl -v http://localhost:8080/actuator/health/readiness
 ```
+
+## new health state with name smartdb
+```
+@Component("smartdb")
+public class CustomHealthIndicator implements HealthIndicator {
+    @Override
+    public Health health() {
+        ...
+        return Health.down()
+                     .withDetail("any-key", "something wrong")
+                     .build();
+    }
+}
+```
+
+check new health state
+```
+curl -v http://localhost:8080/actuator/health/smartdb
+```
+
