@@ -1,12 +1,24 @@
-package com.example.demo.logic;
+## apply filter with pattern
+```
+@WebFilter("/api/*")
+public class MyFilter implements Filter { }
+```
+Spring boot's annotation @ServletComponentScan enables scanning of Servlet components. That means Servlet 3.0 annotations: @WebServlet, @WebFilter and @WebListener can be used along with Spring components. 
+```
+@ServletComponentScan
+@SpringBootApplication
+public class DemoApplication { ... }
+```
 
-import org.springframework.boot.availability.AvailabilityChangeEvent;
-import org.springframework.boot.availability.LivenessState;
-import org.springframework.boot.availability.ReadinessState;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Component;
-
+## enable liveness and readiness
+application properties
+```
+management.endpoint.health.probes.enabled=true
+management.health.livenessState.enabled=true
+management.health.readinessState.enabled=true
+```
+to modify the state
+```
 @Component
 public class StateManager {
     private final ApplicationEventPublisher eventPublisher;
@@ -26,3 +38,5 @@ public class StateManager {
         AvailabilityChangeEvent.publish(eventPublisher, MyState.SERVICE_DOWN, LivenessState.BROKEN);
     }
 }
+
+```
