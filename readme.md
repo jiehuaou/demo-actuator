@@ -44,3 +44,8 @@ public class StateManager {
 }
 
 ```
+check the state
+```
+curl -v http://localhost:8080/actuator/health/liveness
+curl -v http://localhost:8080/actuator/health/readiness
+```
